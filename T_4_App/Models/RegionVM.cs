@@ -4,13 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace T_4_App
+namespace T_4_App.Models
 {
-    using Models;
-
-    partial class TypeScriptViewModelTemplate
+    public class RegionVM
     {
-        public ViewModel Model { get; set; }
+        public int Id { get; set; }
+        public string Title { get; set; }
     }
-
 }

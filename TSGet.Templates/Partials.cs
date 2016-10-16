@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Core
+namespace TSGet.Templates
 {
-    public class Class1
-    {
-    }
+    
 }

@@ -7,7 +7,7 @@
 //     the code is regenerated.
 // </auto-generated>
 // ------------------------------------------------------------------------------
-namespace T_4_App
+namespace CodeGenerator
 {
     using System.Linq;
     using System.Text;
@@ -18,9 +18,9 @@ namespace T_4_App
     /// Class to produce the template output
     /// </summary>
     
-    #line 1 "c:\users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\T_4_App\TypeScriptViewModelTemplate.tt"
+    #line 1 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public partial class TypeScriptViewModelTemplate : TypeScriptViewModelTemplateBase
+    public partial class ViewModelTemplate : ViewModelTemplateBase
     {
 #line hidden
         /// <summary>
@@ -28,44 +28,56 @@ namespace T_4_App
         /// </summary>
         public virtual string TransformText()
         {
-            this.Write("\r\ninterface I");
             
-            #line 7 "c:\users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\T_4_App\TypeScriptViewModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Title));
+            #line 6 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.ModuleText));
             
             #line default
             #line hidden
-            this.Write(" {\r\n");
+            this.Write("\r\nnamespace ");
             
-            #line 8 "c:\users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\T_4_App\TypeScriptViewModelTemplate.tt"
- foreach (var prop in Model.Properties)
-{ 
+            #line 7 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Namespace));
+            
+            #line default
+            #line hidden
+            this.Write(" {\r\n\texport interface I");
+            
+            #line 8 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
+            
+            #line default
+            #line hidden
+            this.Write(" {\r\n\t");
+            
+            #line 9 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
+ foreach (var prop in Model.Properties) 
+	{ 
             
             #line default
             #line hidden
             this.Write("\t");
             
-            #line 10 "c:\users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\T_4_App\TypeScriptViewModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Title));
+            #line 11 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Key));
             
             #line default
             #line hidden
             this.Write(": ");
             
-            #line 10 "c:\users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\T_4_App\TypeScriptViewModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Type));
+            #line 11 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(prop.Value));
             
             #line default
             #line hidden
-            this.Write(";\r\n");
+            this.Write("\r\n\t");
             
-            #line 11 "c:\users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\T_4_App\TypeScriptViewModelTemplate.tt"
- } // end of foreach
-
+            #line 12 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
+ } 
             
             #line default
             #line hidden
-            this.Write("}\r\n");
+            this.Write("\t}\r\n}");
             return this.GenerationEnvironment.ToString();
         }
     }
@@ -77,7 +89,7 @@ namespace T_4_App
     /// Base class for this transformation
     /// </summary>
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.TextTemplating", "14.0.0.0")]
-    public class TypeScriptViewModelTemplateBase
+    public class ViewModelTemplateBase
     {
         #region Fields
         private global::System.Text.StringBuilder generationEnvironmentField;

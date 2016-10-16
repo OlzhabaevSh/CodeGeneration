@@ -1,0 +1,17 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#= Model.ModuleText #>
+namespace <#= Model.Namespace #> {
+	export interface I<#= Model.Name #> {
+	<# foreach (var prop in Model.Properties)
+	{ #>
+		<#= prop #>: any;
+	<# } // end of foreach
+	#>
+	}
+}
+
+
