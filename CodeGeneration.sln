@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
 VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "T_4_App", "T_4_App\T_4_App.csproj", "{9A755727-F544-4CB1-BFC5-DD72FB797107}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeGenerator", "CodeGenerator\CodeGenerator.csproj", "{455BFC89-FD69-4758-A87D-070087FF2208}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DesktopClient", "DesktopClient\DesktopClient.csproj", "{BD0FCA9B-A733-481F-98B0-D312DFFC4443}"
@@ -15,10 +13,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9A755727-F544-4CB1-BFC5-DD72FB797107}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A755727-F544-4CB1-BFC5-DD72FB797107}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A755727-F544-4CB1-BFC5-DD72FB797107}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A755727-F544-4CB1-BFC5-DD72FB797107}.Release|Any CPU.Build.0 = Release|Any CPU
 		{455BFC89-FD69-4758-A87D-070087FF2208}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{455BFC89-FD69-4758-A87D-070087FF2208}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{455BFC89-FD69-4758-A87D-070087FF2208}.Release|Any CPU.ActiveCfg = Release|Any CPU

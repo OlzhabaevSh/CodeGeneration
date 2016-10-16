@@ -30,54 +30,69 @@ namespace CodeGenerator
         {
             
             #line 6 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.ModuleText));
+            this.Write(this.ToStringHelper.ToStringWithCulture(ModuleText));
             
             #line default
             #line hidden
             this.Write("\r\nnamespace ");
             
             #line 7 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Namespace));
+            this.Write(this.ToStringHelper.ToStringWithCulture(Namespace));
             
             #line default
             #line hidden
-            this.Write(" {\r\n\texport interface I");
+            this.Write(" {\r\n");
             
             #line 8 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
-            this.Write(this.ToStringHelper.ToStringWithCulture(Model.Name));
+ foreach (var item in Types) 
+{ 
             
             #line default
             #line hidden
-            this.Write(" {\r\n\t");
+            this.Write("\texport interface I");
             
-            #line 9 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
- foreach (var prop in Model.Properties) 
-	{ 
+            #line 10 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
+            this.Write(this.ToStringHelper.ToStringWithCulture(item.Name));
             
             #line default
             #line hidden
-            this.Write("\t");
+            this.Write(" {\r\n");
             
             #line 11 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
+ foreach (var prop in item.Properties) 
+{ 
+            
+            #line default
+            #line hidden
+            this.Write("\t\t");
+            
+            #line 13 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Key));
             
             #line default
             #line hidden
             this.Write(": ");
             
-            #line 11 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
+            #line 13 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
             this.Write(this.ToStringHelper.ToStringWithCulture(prop.Value));
             
             #line default
             #line hidden
-            this.Write("\r\n\t");
+            this.Write(";\r\n");
             
-            #line 12 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
+            #line 14 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
  } 
             
             #line default
             #line hidden
-            this.Write("\t}\r\n}");
+            this.Write("\t}\r\n");
+            
+            #line 16 "C:\Users\chingiz\documents\visual studio 2015\Projects\CodeGeneration\CodeGenerator\ViewModelTemplate.tt"
+ } 
+            
+            #line default
+            #line hidden
+            this.Write("}");
             return this.GenerationEnvironment.ToString();
         }
     }

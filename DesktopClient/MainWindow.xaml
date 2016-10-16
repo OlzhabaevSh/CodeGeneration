@@ -12,17 +12,42 @@
                 <StackPanel Width="250" VerticalAlignment="Center">
                     <TextBlock>Write place:</TextBlock>
                     <TextBox Name="tb_saveFolderSimple" Text="C:\" MouseDoubleClick="tb_saveFolderSimple_MouseDoubleClick"></TextBox>
+                    <CheckBox Name="cb_asSingleFileSimple">As single file</CheckBox>
                     <Button Name="btn_saveSimple" Margin="0,15,0,0" Click="btn_saveSimple_Click">Save</Button>
                 </StackPanel>
             </TabItem>
-            <TabItem Header="Select">
-                <StackPanel></StackPanel>
+            <TabItem Header="Select" Name="ti_select">
+                <StackPanel>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="auto"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                            <RowDefinition Height="auto"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        
+                        <TextBlock Grid.Row="0" Grid.Column="0">Select class</TextBlock>
+                        <ComboBox Grid.Row="0" Grid.Column="1" Name="cb_typesSelect"></ComboBox>
+
+                        <TextBlock Grid.Row="1" Grid.Column="0">Path</TextBlock>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="C:\" Name="tb_savePathSelect" MouseDoubleClick="tb_savePathSelect_MouseDoubleClick" ></TextBox>
+
+                    </Grid>
+                    <Button Name="btn_saveSelect" Click="btn_saveSelect_Click">Save</Button>
+                </StackPanel>
             </TabItem>
-            <TabItem Header="Search">
-                <StackPanel></StackPanel>
-            </TabItem>
-            <TabItem Header="Find">
-                <StackPanel></StackPanel>
+            <TabItem Header="Multy">
+                <StackPanel>
+                    <TextBlock>Select classes. Show only IToConvertSearchable</TextBlock>
+                    <ListBox Name="lb_classesMulty" Height="150" SelectionMode="Multiple"></ListBox>
+                    <TextBlock>Path</TextBlock>
+                    <TextBox Name="tb_savePathMulty" MouseDoubleClick="tb_savePathMulty_MouseDoubleClick" Text="C:\"></TextBox>
+                    <Button Name="btn_saveMulty" Click="btn_saveMulty_Click">Save</Button>
+                </StackPanel>
             </TabItem>
         </TabControl>
     </Grid>

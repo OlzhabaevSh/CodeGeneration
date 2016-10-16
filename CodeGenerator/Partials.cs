@@ -10,6 +10,18 @@ namespace CodeGenerator
 
     public partial class ViewModelTemplate
     {
-        public TSViewModelTemplate Model { get; set; }
+        public bool IsModule { get; set; } = false;
+
+        public string ModuleText
+        {
+            get
+            {
+                return IsModule ? "export" : string.Empty;
+            }
+        }
+
+        public string Namespace { get; set; } = "ViewModels";
+
+        public List<TSViewModelTemplate> Types { get; set; }
     }
 }

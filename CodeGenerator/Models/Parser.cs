@@ -108,7 +108,7 @@ namespace CodeGenerator.Models
 
                     if (types.Any(x => x.Name == genericArg.Name))
                     {
-                        res = string.Format("Array<I{0}>", genericArg.Name);
+                        res = string.Format("Array<ViewModels.I{0}>", genericArg.Name);
                     }
                     else
                     {
@@ -127,7 +127,7 @@ namespace CodeGenerator.Models
 
                 if (types.Any(x => x.Name == type.Name))
                 {
-                    res = string.Format("I{0}", type.Name);
+                    res = string.Format("ViewModels.I{0}", type.Name);
                 }
                 else
                 {

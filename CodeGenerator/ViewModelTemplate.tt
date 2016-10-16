@@ -3,12 +3,15 @@
 <#@ import namespace="System.Linq" #>
 <#@ import namespace="System.Text" #>
 <#@ import namespace="System.Collections.Generic" #>
-<#= Model.ModuleText #>
-namespace <#= Model.Namespace #> {
-	export interface I<#= Model.Name #> {
-	<# foreach (var prop in Model.Properties) 
-	{ #>
-	<#= prop.Key #>: <#= prop.Value #>
-	<# } #>
+<#= ModuleText #>
+namespace <#= Namespace #> {
+<# foreach (var item in Types) 
+{ #>
+	export interface I<#= item.Name #> {
+<# foreach (var prop in item.Properties) 
+{ #>
+		<#= prop.Key #>: <#= prop.Value #>;
+<# } #>
 	}
+<# } #>
 }
