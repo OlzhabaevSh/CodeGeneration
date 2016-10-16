@@ -1,0 +1,29 @@
+﻿<Window x:Class="DesktopClient.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DesktopClient"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <TabControl>
+            <TabItem Header="Simple">
+                <StackPanel Width="250" VerticalAlignment="Center">
+                    <TextBlock>Write place:</TextBlock>
+                    <TextBox Name="tb_saveFolderSimple" Text="C:\" MouseDoubleClick="tb_saveFolderSimple_MouseDoubleClick"></TextBox>
+                    <Button Name="btn_saveSimple" Margin="0,15,0,0" Click="btn_saveSimple_Click">Save</Button>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="Select">
+                <StackPanel></StackPanel>
+            </TabItem>
+            <TabItem Header="Search">
+                <StackPanel></StackPanel>
+            </TabItem>
+            <TabItem Header="Find">
+                <StackPanel></StackPanel>
+            </TabItem>
+        </TabControl>
+    </Grid>
+</Window>
