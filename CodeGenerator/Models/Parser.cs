@@ -34,8 +34,10 @@ namespace CodeGenerator.Models
             RegistTypes();
         }
 
-        public string Convert(Type type)
+        public string Convert(Type type, bool searchEmplementedInterface)
         {
+            IsFindInterface = searchEmplementedInterface;
+
             var res = string.Empty;
 
             if (_vals.Any(x => x.Key == type))

@@ -13,7 +13,7 @@ namespace CodeGenerator
     {
         public Assembly Assembly { get; set; }
 
-        public void GenerateViewModelSimple(Type type, string path, bool includeModule = false, bool isSearchInterfaces = true)
+        public void GenerateViewModelSimple(Type type, string path, bool isSearchInterfaces = true, bool includeModule = false)
         {
             var parser = new Parser() { IsFindInterface = isSearchInterfaces, Assembly = Assembly }; 
             
@@ -27,7 +27,7 @@ namespace CodeGenerator
             
             foreach (var item in properties)
             {
-                tsVMModel.Properties.Add(item.Name, parser.Convert(item.PropertyType));
+                tsVMModel.Properties.Add(item.Name, parser.Convert(item.PropertyType, isSearchInterfaces));
             }
 
             var data = new List<TSViewModelTemplate>() { tsVMModel };
@@ -39,7 +39,7 @@ namespace CodeGenerator
             System.IO.File.WriteAllText(savePath, template);
         }
 
-        public void GenerateViewModelSimple(List<Type> types, string path, bool includeModule = false, bool isSearchInterfaces = true)
+        public void GenerateViewModelSimple(List<Type> types, string path, bool isSearchInterfaces = true, bool includeModule = false, )
         {
             var parser = new Parser() { IsFindInterface = isSearchInterfaces, Assembly = Assembly };
 
@@ -57,7 +57,7 @@ namespace CodeGenerator
 
                 foreach (var item in properties)
                 {
-                    tsVMModel.Properties.Add(item.Name, parser.Convert(item.PropertyType));
+                    tsVMModel.Properties.Add(item.Name, parser.Convert(item.PropertyType, isSearchInterfaces));
                 }
 
                 data.Add(tsVMModel);
