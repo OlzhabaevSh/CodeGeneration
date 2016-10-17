@@ -1,0 +1,98 @@
+﻿<#@ template language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections.Generic" #>
+<# if(IsModule)
+{ #>
+export 
+<# } #>
+namespace <#= Namespace #> {
+<# if (IsGenerateModel)
+{ #>
+	export interface I<#= Type.Name #> {
+<# foreach(var prop in Type.Properties)
+{ #>
+		<#= prop.Key #>: <#= prop.Value #>;
+<# } #>
+	}
+
+	export class <#= Type.Name #> implements <#= Namespace #>.I<#= Type.Name #> {
+<# foreach(var prop in Type.Properties) 
+{ #>
+		public <#= prop.Key #>: <#= prop.Value #>;
+<# } #>
+
+		constructor(config: <#= Namespace #>.I<#= Type.Name #>){
+			angular.copy(this, config);
+		}
+	}
+
+	export class <#= ClassName #>Service { 
+
+    private _url: string = "/api/<#= ClassName #>";
+
+    constructor(private $http: ng.IHttpService) { 
+    }
+
+    Get(): ng.IHttpPromise<Array<<#= Namespace #>.I<#= Type.Name #>>>;
+
+    Get(id: number): ng.IHttpPromise<<#= Namespace #>.I<#= Type.Name #>>;
+
+    Get(id?: number): ng.IHttpPromise<Array<<#= Namespace #>.I<#= Type.Name #>>> { 
+        if (id == undefined) {
+            return this.$http({
+                url: this._url,
+                method: 'get'
+            });
+        }
+        else { 
+            return this.$http({
+                url: this._url + "/" + id,
+                method: 'get'
+            });
+        }
+    }
+	
+    GetWithQuery(options: Array<string>): Array<<#= Namespace #>.I<#= Type.Name #>> {
+        let url = this._url + "?";
+
+        if (options.length > 0) { 
+            options.forEach((item) => {
+                url += item + "&"
+            });
+            url = url.slice(url.length - 1, 1);
+        }
+
+        return this.$http({
+            url: url,
+            method: 'get'
+        });
+    }
+
+    Post(data: <#= Namespace #>.I<#= Type.Name #>): ng.IHttpPromise<<#= Namespace #>.I<#= Type.Name #>> { 
+        return this.$http({
+            url: this._url,
+            method: 'post'
+        });
+    }
+
+    Put(id: number, data: <#= Namespace #>.I<#= Type.Name #>): ng.IHttpPromise<<#= Namespace #>.I<#= Type.Name #>> { 
+        return this.$http({
+            url: this._url + "/" + id,
+            method: 'put',
+            data: data
+        });
+    }
+
+    Delete(id: number): ng.IHttpPromise<<#= Namespace #>.I<#= Type.Name #>> { 
+        return this.$http({
+            url: this._url + "/" + id,
+            method: 'delete'
+        });
+    }
+
+}
+
+<# } #>
+}

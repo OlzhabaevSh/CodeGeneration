@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace CodeGenerator.Models
 {
+    using Models;
+
     public class Parser
     {
         private Assembly _assembly;
@@ -34,24 +36,36 @@ namespace CodeGenerator.Models
             RegistTypes();
         }
 
-        public string Convert(Type type, bool searchEmplementedInterface)
+        public PropertyParseModel Convert(Type type, bool searchEmplementedInterface)
         {
             IsFindInterface = searchEmplementedInterface;
 
-            var res = string.Empty;
+            var res = new PropertyParseModel() { TypeName = string.Empty };
 
             if (_vals.Any(x => x.Key == type))
             {
-                res = _vals.First(x => x.Key == type).Value;
+                res.TypeName = _vals.First(x => x.Key == type).Value;
             }
             else
             {
-                res = GenerateCustomName(type);
+                res.TypeName = GenerateCustomName(type);
             }
 
+            res.ValueTypeNullable = IsValueTypeNullable(type);
+            
             return res;
         }
-        
+
+        private bool IsValueTypeNullable(Type type)
+        {
+            if (type.IsValueType && type.Name == "Nullable`1")
+            {
+                return true;
+            }
+
+            return false;
+        }
+
         private void RegistTypes()
         {
             // numbers
@@ -110,7 +124,7 @@ namespace CodeGenerator.Models
 
                     if (types.Any(x => x.Name == genericArg.Name))
                     {
-                        res = string.Format("Array<ViewModels.I{0}>", genericArg.Name);
+                        res = string.Format("Array<Proxy.I{0}>", genericArg.Name);
                     }
                     else
                     {
@@ -129,7 +143,7 @@ namespace CodeGenerator.Models
 
                 if (types.Any(x => x.Name == type.Name))
                 {
-                    res = string.Format("ViewModels.I{0}", type.Name);
+                    res = string.Format("Proxy.I{0}", type.Name);
                 }
                 else
                 {

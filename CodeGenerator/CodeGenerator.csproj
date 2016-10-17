@@ -41,8 +41,19 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Generator.cs" />
+    <Compile Include="HttpServiceCustomTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HttpServiceCustomTemplate.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HttpServiceTemplate.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HttpServiceTemplate.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IToConvertSearchable.cs" />
     <Compile Include="Models\Parser.cs" />
+    <Compile Include="Models\PropertyParseModel.cs" />
     <Compile Include="Models\TSViewModelTemplate.cs" />
     <Compile Include="Partials.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -53,6 +64,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HttpServiceCustomTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>HttpServiceCustomTemplate.cs</LastGenOutput>
+    </Content>
+    <Content Include="HttpServiceTemplate.tt">
+      <Generator>TextTemplatingFilePreprocessor</Generator>
+      <LastGenOutput>HttpServiceTemplate.cs</LastGenOutput>
+    </Content>
     <Content Include="ViewModelTemplate.tt">
       <Generator>TextTemplatingFilePreprocessor</Generator>
       <LastGenOutput>ViewModelTemplate.cs</LastGenOutput>
