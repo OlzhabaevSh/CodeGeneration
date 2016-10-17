@@ -49,6 +49,15 @@
                     <Button Name="btn_saveMulty" Click="btn_saveMulty_Click">Save</Button>
                 </StackPanel>
             </TabItem>
+            <TabItem Header="ProxySimple">
+                <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
+                    
+                    <Button Name="btn_generateProxySimple" Click="btn_generateProxySimple_Click">Generate</Button>
+                </StackPanel>
+            </TabItem>
+            <TabItem Header="ProxyCustom">
+
+            </TabItem>
         </TabControl>
     </Grid>
 </Window>

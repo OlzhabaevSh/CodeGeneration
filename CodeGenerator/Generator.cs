@@ -81,7 +81,39 @@ namespace CodeGenerator
 
         public void GenerateHttpService(Type type, string path, Type controllerType, bool isSearchInterfaces = true, bool includeModule = false)
         {
-            // todo;
+            var parser = new Parser() { IsFindInterface = isSearchInterfaces, Assembly = Assembly };
+
+            var properties = type.GetProperties();
+
+            var tsVMModel = new TSViewModelTemplate()
+            {
+                Name = type.Name,
+                Properties = new Dictionary<string, string>()
+            };
+
+            foreach (var item in properties)
+            {
+                var propertyInfo = parser.Convert(item.PropertyType, isSearchInterfaces);
+
+                var propertyName = propertyInfo.ValueTypeNullable ? item.Name + "?" : item.Name;
+
+                tsVMModel.Properties.Add(propertyName, propertyInfo.TypeName);
+            }
+
+            var data = new List<TSViewModelTemplate>() { tsVMModel };
+
+            var startIndex = controllerType.Name.IndexOf("Controller");
+            var ctrlName = controllerType.Name.Remove(startIndex);
+
+            var tmpl = new HttpServiceTemplate()
+            {
+                Type = data.First(),
+                ClassName = ctrlName,
+            };
+
+            var res = tmpl.TransformText();
+            var savePath = string.Format("{0}\\{1}{2}.ts", path, ctrlName, "Service");
+            System.IO.File.WriteAllText(savePath, res);
         }
 
         public void GenerateHttpService(Type type, string path, string controllerName, bool isSearchInterfaces = true, bool includeModule = false)

@@ -171,6 +171,30 @@ namespace DesktopClient
             _generator.GenerateViewModelSimple(res, tb_savePathMulty.Text);
             MessageBox.Show("Files created");
         }
-        
+
+        private void btn_generateProxySimple_Click(object sender, RoutedEventArgs e)
+        {
+            FolderBrowserDialog folderPicker = new FolderBrowserDialog();
+
+            var res = folderPicker.ShowDialog();
+
+            var ctrlType = typeof(Controllers.EmployeeController);
+            var type = typeof(Controllers.EmployeeVM);
+
+            switch (res)
+            {
+                case System.Windows.Forms.DialogResult.OK:
+                    _generator.GenerateHttpService(type, folderPicker.SelectedPath, ctrlType);
+                    break;
+                case System.Windows.Forms.DialogResult.Yes:
+                    _generator.GenerateHttpService(type, folderPicker.SelectedPath, ctrlType);
+                    break;
+                default:
+                    break;
+
+            }
+
+            MessageBox.Show("Files created");
+        }
     }
 }
