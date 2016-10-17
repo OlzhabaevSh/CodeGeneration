@@ -39,7 +39,7 @@ namespace CodeGenerator
             System.IO.File.WriteAllText(savePath, template);
         }
 
-        public void GenerateViewModelSimple(List<Type> types, string path, bool isSearchInterfaces = true, bool includeModule = false, )
+        public void GenerateViewModelSimple(List<Type> types, string path, bool isSearchInterfaces = true, bool includeModule = false)
         {
             var parser = new Parser() { IsFindInterface = isSearchInterfaces, Assembly = Assembly };
 
